@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS GAMING | Level Up Your Experience</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neon: {
+                            green: '#39ff14',
+                            purple: '#bc13fe',
+                            blue: '#04d9ff',
+                        },
+                        dark: {
+                            bg: '#0a0a0a',
+                            card: '#171717',
+                            hover: '#262626'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        gaming: ['Orbitron', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            'from': { boxShadow: '0 0 10px #39ff14, 0 0 20px #39ff14' },
+                            'to': { boxShadow: '0 0 20px #39ff14, 0 0 30px #39ff14' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Utilities */
+        .text-glow {
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.5), 0 0 20px rgba(57, 255, 20, 0.3);
+        }
+        .text-glow-purple {
+            text-shadow: 0 0 10px rgba(188, 19, 254, 0.5), 0 0 20px rgba(188, 19, 254, 0.3);
+        }
+        .glass {
+            background: rgba(23, 23, 23, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px -10px rgba(188, 19, 254, 0.5);
+            border-color: #bc13fe;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #39ff14; 
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-white font-sans antialiased overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-gaming font-bold text-white tracking-wider hover:text-neon-green transition-colors">
+                        NEXUS<span class="text-neon-green">.GG</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="hover:text-neon-green px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="#games" class="hover:text-neon-purple px-3 py-2 rounded-md text-sm font-medium transition-colors">Games</a>
+                        <a href="#features" class="hover:text-neon-blue px-3 py-2 rounded-md text-sm font-medium transition-colors">Features</a>
+                        <a href="#community" class="hover:text-neon-green px-3 py-2 rounded-md text-sm font-medium transition-colors">Community</a>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <button class="bg-transparent border border-neon-green text-neon-green hover:bg-neon-green hover:text-black px-6 py-2 rounded-full font-gaming font-bold transition-all duration-300 shadow-[0_0_10px_rgba(57,255,20,0.2)] hover:shadow-[0_0_20px_rgba(57,255,20,0.6)]">
+                        LOGIN
+                    </button>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80" alt="Gaming Background" class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-b from-dark-bg/80 via-dark-bg/50 to-dark-bg"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-gaming font-black mb-6 tracking-tight animate-fade-in-up">
+                NEXT GEN <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-neon-blue text-glow">GAMING</span>
+                <br>IS HERE
+            </h1>
+            <p class="mt-4 text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light">
+                Immerse yourself in the ultimate gaming experience. Join millions of players in the Nexus universe.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <button class="group relative px-8 py-4 bg-neon-purple text-white font-gaming font-bold rounded-lg overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(188,19,254,0.6)]">
+                    <span class="relative z-10 flex items-center gap-2">
+                        PLAY NOW <i data-lucide="play-circle" class="w-5 h-5"></i>
+                    </span>
+                    <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                </button>
+                <button class="px-8 py-4 border border-gray-600 hover:border-white text-gray-300 hover:text-white font-gaming font-bold rounded-lg transition-all hover:bg-white/5 backdrop-blur-sm">
+                    EXPLORE GAMES
+                </button>
+            </div>
+        </div>
+
+        <!-- Floating Elements -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="w-8 h-8 text-neon-green"></i>
+        </div>
+    </section>
+
+    <!-- Featured Games Section -->
+    <section id="games" class="py-24 bg-dark-bg relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-gaming font-bold mb-4 text-white">TRENDING <span class="text-neon-purple text-glow-purple">GAMES</span></h2>
+                <div class="h-1 w-24 bg-neon-purple mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Game Card 1 -->
+                <div class="group relative bg-dark-card rounded-xl overflow-hidden border border-gray-800 card-hover cursor-pointer">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=80" alt="Cyber Shooter" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-card to-transparent opacity-80"></div>
+                        <span class="absolute top-4 right-4 bg-neon-green text-black text-xs font-bold px-3 py-1 rounded-full">NEW</span>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-2xl font-gaming font-bold mb-2 group-hover:text-neon-purple transition-colors">CYBER SHOOTER</h3>
+                        <p class="text-gray-400 text-sm mb-4">Experience the future of FPS combat in a neon-drenched metropolis.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-neon-blue font-bold">FPS / Action</span>
+                            <div class="flex items-center gap-1 text-yellow-400">
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <span class="text-white text-sm">4.9</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Card 2 -->
+                <div class="group relative bg-dark-card rounded-xl overflow-hidden border border-gray-800 card-hover cursor-pointer">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=80" alt="Space Odyssey" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-card to-transparent opacity-80"></div>
+                        <span class="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">HOT</span>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-2xl font-gaming font-bold mb-2 group-hover:text-neon-purple transition-colors">SPACE ODYSSEY</h3>
+                        <p class="text-gray-400 text-sm mb-4">Explore the unknown galaxy and build your empire among the stars.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-neon-blue font-bold">RPG / Strategy</span>
+                            <div class="flex items-center gap-1 text-yellow-400">
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <span class="text-white text-sm">4.7</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Card 3 -->
+                <div class="group relative bg-dark-card rounded-xl overflow-hidden border border-gray-800 card-hover cursor-pointer">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=80" alt="Racing Legends" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-card to-transparent opacity-80"></div>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-2xl font-gaming font-bold mb-2 group-hover:text-neon-purple transition-colors">RACING LEGENDS</h3>
+                        <p class="text-gray-400 text-sm mb-4">High-octane street racing with customizable supercars.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-neon-blue font-bold">Racing / Sim</span>
+                            <div class="flex items-center gap-1 text-yellow-400">
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <span class="text-white text-sm">4.8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 bg-gradient-to-b from-dark-bg to-black relative overflow-hidden">
+        <!-- Decorative blobs -->
+        <div class="absolute top-0 left-0 w-96 h-96 bg-neon-purple/20 rounded-full filter blur-[100px]"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-neon-green/10 rounded-full filter blur-[100px]"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-5xl font-gaming font-bold mb-6">UNLEASH YOUR <br><span class="text-neon-green text-glow">TRUE POTENTIAL</span></h2>
+                    <p class="text-gray-400 text-lg mb-8">
+                        Join a community where skill meets passion. Participate in global tournaments, connect with pro players, and climb the leaderboards.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-dark-card p-3 rounded-lg border border-gray-800">
+                                <i data-lucide="trophy" class="w-6 h-6 text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1">Weekly Tournaments</h4>
+                                <p class="text-gray-500 text-sm">Compete for massive prize pools every weekend.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="bg-dark-card p-3 rounded-lg border border-gray-800">
+                                <i data-lucide="users" class="w-6 h-6 text-neon-blue"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1">Global Community</h4>
+                                <p class="text-gray-500 text-sm">Connect with over 10 million players worldwide.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="bg-dark-card p-3 rounded-lg border border-gray-800">
+                                <i data-lucide="zap" class="w-6 h-6 text-neon-purple"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-1">Low Latency Servers</h4>
+                                <p class="text-gray-500 text-sm">Experience lag-free gaming with our premium infrastructure.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="relative z-10 rounded-2xl overflow-hidden border-2 border-neon-green/30 shadow-[0_0_50px_rgba(57,255,20,0.2)]">
+                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Gaming Setup" class="w-full">
+                    </div>
+                    <!-- Decorative elements -->
+                    <div class="absolute -top-10 -right-10 w-24 h-24 border-4 border-neon-purple rounded-full opacity-50 animate-float"></div>
+                    <div class="absolute -bottom-5 -left-5 w-40 h-40 bg-neon-blue/20 rounded-full filter blur-xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-gray-900 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="#" class="text-2xl font-gaming font-bold text-white tracking-wider mb-4 block">
+                        NEXUS<span class="text-neon-green">.GG</span>
+                    </a>
+                    <p class="text-gray-500 text-sm">
+                        The ultimate destination for gamers. Play, compete, and conquer.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Platform</h4>
+                    <ul class="space-y-2 text-gray-500 text-sm">
+                        <li><a href="#" class="hover:text-neon-green transition-colors">Browse Games</a></li>
+                        <li><a href="#" class="hover:text-neon-green transition-colors">Tournaments</a></li>
+                        <li><a href="#" class="hover:text-neon-green transition-colors">Live Streams</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Support</h4>
+                    <ul class="space-y-2 text-gray-500 text-sm">
+                        <li><a href="#" class="hover:text-neon-green transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-neon-green transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-neon-green transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="twitch" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-900 pt-8 text-center">
+                <p class="text-gray-600 text-sm">&copy; 2024 Nexus Gaming. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
